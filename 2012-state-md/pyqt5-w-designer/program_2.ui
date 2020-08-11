@@ -132,7 +132,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QGroupBox" name="pizza_one_groupbox">
+          <widget class="QGroupBox" name="pizza_one_groupbox_1">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -161,7 +161,7 @@
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>0</y>
+                 <y>-51</y>
                  <width>531</width>
                  <height>348</height>
                 </rect>
@@ -372,7 +372,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QGroupBox" name="pizza_two_groupbox">
+          <widget class="QGroupBox" name="pizza_two_groupbox_1">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -686,56 +686,56 @@
                  </widget>
                 </item>
                 <item row="1" column="0">
-                 <widget class="QLabel" name="size_label_1">
+                 <widget class="QLabel" name="size_label">
                   <property name="text">
                    <string>Size - Large</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="toppings_label_1">
-                  <property name="text">
-                   <string>Toppings - 4</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="shape_label_1">
-                  <property name="text">
-                   <string>Shape - Round</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_25">
-                  <property name="text">
-                   <string>Crust - Thick</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="1" column="1">
-                 <widget class="QLabel" name="label_27">
+                 <widget class="QLabel" name="size_cost_label">
                   <property name="text">
                    <string>$15.95</string>
                   </property>
                  </widget>
                 </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="toppings_label">
+                  <property name="text">
+                   <string>Toppings - 4</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="2" column="1">
-                 <widget class="QLabel" name="label_36">
+                 <widget class="QLabel" name="toppings_cost_label">
                   <property name="text">
                    <string>$5.00</string>
                   </property>
                  </widget>
                 </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="shape_label">
+                  <property name="text">
+                   <string>Shape - Round</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="3" column="1">
-                 <widget class="QLabel" name="label_43">
+                 <widget class="QLabel" name="shape_cost_label">
                   <property name="text">
                    <string>$0.00</string>
                   </property>
                  </widget>
                 </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="crust_label">
+                  <property name="text">
+                   <string>Crust - Thick</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="4" column="1">
-                 <widget class="QLabel" name="label_44">
+                 <widget class="QLabel" name="crust_cost_label">
                   <property name="text">
                    <string>$0.00</string>
                   </property>
@@ -756,7 +756,7 @@
                  </widget>
                 </item>
                 <item row="6" column="1">
-                 <widget class="QLabel" name="label_46">
+                 <widget class="QLabel" name="subcost_label">
                   <property name="text">
                    <string>$20.95</string>
                   </property>
@@ -770,7 +770,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QGroupBox" name="pizza_one_groupbox_3">
+          <widget class="QGroupBox" name="pizza_two_groupbox_2">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -791,11 +791,11 @@
              <number>20</number>
             </property>
             <item>
-             <widget class="QScrollArea" name="scrollArea_5">
+             <widget class="QScrollArea" name="scrollArea_4">
               <property name="widgetResizable">
                <bool>true</bool>
               </property>
-              <widget class="QWidget" name="scrollAreaWidgetContents_5">
+              <widget class="QWidget" name="scrollAreaWidgetContents_4">
                <property name="geometry">
                 <rect>
                  <x>0</x>
@@ -804,9 +804,9 @@
                  <height>163</height>
                 </rect>
                </property>
-               <layout class="QFormLayout" name="formLayout_6">
+               <layout class="QFormLayout" name="formLayout_5">
                 <item row="0" column="0">
-                 <widget class="QLabel" name="label_61">
+                 <widget class="QLabel" name="label_7">
                   <property name="text">
                    <string>Your order:</string>
                   </property>
@@ -816,56 +816,56 @@
                  </widget>
                 </item>
                 <item row="1" column="0">
-                 <widget class="QLabel" name="label_62">
+                 <widget class="QLabel" name="size_label_2">
                   <property name="text">
                    <string>Size - Large</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="label_63">
-                  <property name="text">
-                   <string>Toppings - 4</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_64">
-                  <property name="text">
-                   <string>Shape - Round</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_65">
-                  <property name="text">
-                   <string>Crust - Thick</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="1" column="1">
-                 <widget class="QLabel" name="label_66">
+                 <widget class="QLabel" name="size_cost_label_2">
                   <property name="text">
                    <string>$15.95</string>
                   </property>
                  </widget>
                 </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="toppings_label_2">
+                  <property name="text">
+                   <string>Toppings - 4</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="2" column="1">
-                 <widget class="QLabel" name="label_67">
+                 <widget class="QLabel" name="toppings_cost_label_2">
                   <property name="text">
                    <string>$5.00</string>
                   </property>
                  </widget>
                 </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="shape_label_2">
+                  <property name="text">
+                   <string>Shape - Round</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="3" column="1">
-                 <widget class="QLabel" name="label_68">
+                 <widget class="QLabel" name="shape_cost_label_2">
                   <property name="text">
                    <string>$0.00</string>
                   </property>
                  </widget>
                 </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="crust_label_2">
+                  <property name="text">
+                   <string>Crust - Thick</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="4" column="1">
-                 <widget class="QLabel" name="label_69">
+                 <widget class="QLabel" name="crust_cost_label_2">
                   <property name="text">
                    <string>$0.00</string>
                   </property>
@@ -879,14 +879,14 @@
                  </widget>
                 </item>
                 <item row="6" column="0">
-                 <widget class="QLabel" name="label_70">
+                 <widget class="QLabel" name="label_46">
                   <property name="text">
                    <string>Subtotal</string>
                   </property>
                  </widget>
                 </item>
                 <item row="6" column="1">
-                 <widget class="QLabel" name="label_71">
+                 <widget class="QLabel" name="subcost_label_2">
                   <property name="text">
                    <string>$20.95</string>
                   </property>
