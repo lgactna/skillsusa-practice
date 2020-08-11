@@ -1,3 +1,4 @@
-time taken: 61:10
+time taken: 1:41:59
 
-61:10 - 08/10/20
+1:01:10 - commit 2
+0:40:49 - commit 3,4
