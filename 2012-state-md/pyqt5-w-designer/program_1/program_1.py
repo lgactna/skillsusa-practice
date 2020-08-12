@@ -114,7 +114,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, -223, 731, 308))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 731, 308))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.formLayout_2 = QtWidgets.QFormLayout(self.scrollAreaWidgetContents_2)
         self.formLayout_2.setObjectName("formLayout_2")
@@ -300,7 +300,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Batting Percentages"))
         self.label_8.setText(_translate("MainWindow", "Contestant #"))
         self.label_9.setText(_translate("MainWindow", "Batting Percentages"))
         self.label_10.setText(_translate("MainWindow", "Program #"))

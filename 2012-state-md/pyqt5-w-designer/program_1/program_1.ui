@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Batting Percentages</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -200,7 +200,7 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-223</y>
+            <y>0</y>
             <width>731</width>
             <height>308</height>
            </rect>
