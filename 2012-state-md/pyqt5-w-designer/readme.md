@@ -1,4 +1,4 @@
-time taken: 1:41:59
+time taken: 3:10:08
 
 1:01:10 - commit 2
 0:40:49 - commit 3,4
