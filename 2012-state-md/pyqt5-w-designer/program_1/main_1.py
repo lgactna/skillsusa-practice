@@ -69,7 +69,8 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         #Connect buttons
         self.exit_button.clicked.connect(self.exit)
-        self.calculate_button.clicked.connect
+        self.calculate_button.clicked.connect(self.handle_center_button)
+        self.clear_button.clicked.connect(self.clear_and_return)
     
     def exit(self):
         """Exit the program by calling `close()`.
@@ -80,15 +81,15 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def handle_center_button(self):
         """Depending on the screen, determine what to do when the `Calculate` button is clicked.
         
-        Note that this center button will change text during normal program operation."""
-        if self.current_screen = 1:
+        Note that this center button will change text during normal program operation.
+        """
+        if self.current_screen == 1:
             self.calculate_and_add_player()
-        elif self.current_screen = 2:
+        elif self.current_screen == 2:
             self.generate_final_screen()
         else:
             #case 3; default
-            self.clear_and_return
-
+            self.clear_and_return()
     def calculate_and_add_player(self):
         """Get the player input data, create a Player object, and add it to the list of players.
         
@@ -101,8 +102,27 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         #Change "Go to final screen" to "Return to player entry"
         pass
     def clear_and_return(self):
-        """Clear all input fields and set the current screen to the first."""
-        pass
+        """Clear/reset all input fields and set the current screen to the first."""
+        self.player_name_edit.clear()
+        self.team_code_combobox.setCurrentIndex(0)
+        for spinbox in self.player_entry_box.findChildren(QtWidgets.QSpinBox):
+            spinbox.setValue(0)
+    def change_screen(self, new_screen):
+        """Set the current screen. Simplifies widget hiding."""
+        if new_screen == 1:
+            self.player_entry_box.show()
+            self.first_output_box.hide()
+            self.final_output_box.hide()
+        elif new_screen == 2:
+            self.player_entry_box.hide()
+            self.first_output_box.show()
+            self.final_output_box.hide()
+        else:
+            #again, default to the last screen
+            self.player_entry_box.hide()
+            self.first_output_box.hide()
+            self.final_output_box.show()
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
