@@ -426,7 +426,12 @@
              </column>
              <column>
               <property name="text">
-               <string>Batting Average</string>
+               <string>Batting Avg.</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Slugging Avg.</string>
               </property>
              </column>
              <column>
