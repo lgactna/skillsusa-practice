@@ -200,9 +200,9 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>-223</y>
             <width>731</width>
-            <height>216</height>
+            <height>308</height>
            </rect>
           </property>
           <layout class="QFormLayout" name="formLayout_2">
@@ -263,14 +263,14 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="0" colspan="2">
+           <item row="9" column="0" colspan="2">
             <widget class="Line" name="line_3">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
-           <item row="6" column="0" colspan="2">
+           <item row="10" column="0" colspan="2">
             <layout class="QGridLayout" name="gridLayout_2">
              <item row="0" column="1">
               <widget class="QLabel" name="label_21">
@@ -354,7 +354,7 @@
              </item>
             </layout>
            </item>
-           <item row="7" column="0" colspan="2">
+           <item row="11" column="0" colspan="2">
             <widget class="Line" name="line_2">
              <property name="minimumSize">
               <size>
@@ -367,7 +367,7 @@
              </property>
             </widget>
            </item>
-           <item row="8" column="0" colspan="2">
+           <item row="12" column="0" colspan="2">
             <widget class="QLabel" name="label_11">
              <property name="text">
               <string>To add another player, click &quot;Clear&quot;. If you want to view the final results, click &quot;Go to final screen&quot;.</string>
@@ -377,6 +377,46 @@
              </property>
              <property name="wordWrap">
               <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QLabel" name="label_16">
+             <property name="text">
+              <string>Batting Average</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <widget class="QLabel" name="batting_avg_label">
+             <property name="text">
+              <string>0.1233333</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0" colspan="2">
+            <widget class="QLabel" name="label_18">
+             <property name="text">
+              <string>Slugging Percentage</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0" colspan="2">
+            <widget class="QLabel" name="slugging_label">
+             <property name="text">
+              <string>1.000000</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -448,7 +488,7 @@
            <item>
             <widget class="QLabel" name="label_15">
              <property name="text">
-              <string>Below is a table containing all entered data this session:</string>
+              <string>Below is a table containing all entered data this session, sorted by batting average:</string>
              </property>
             </widget>
            </item>
@@ -471,7 +511,7 @@
              </column>
              <column>
               <property name="text">
-               <string>Slugging Avg.</string>
+               <string>Slugging %</string>
               </property>
              </column>
              <column>
