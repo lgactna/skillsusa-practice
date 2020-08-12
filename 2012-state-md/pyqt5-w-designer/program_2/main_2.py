@@ -1,4 +1,5 @@
 #!/usr/bin/python
+"""Program 2: PyQt5+designer used."""
 
 #yes i used the online qt docs for this since i couldn't figure out how to compile them lol
 
