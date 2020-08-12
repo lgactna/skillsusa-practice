@@ -1,7 +1,10 @@
-time taken: 3:10:08
+time taken: 5:01:42
 
 program 1:
 
+1:35:40 - point before table implementation
+
+0:15:54 - table implementation
 
 program 2:
 

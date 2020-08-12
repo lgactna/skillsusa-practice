@@ -200,9 +200,9 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>-219</y>
             <width>731</width>
-            <height>308</height>
+            <height>354</height>
            </rect>
           </property>
           <layout class="QFormLayout" name="formLayout_2">
@@ -270,7 +270,7 @@
              </property>
             </widget>
            </item>
-           <item row="10" column="0" colspan="2">
+           <item row="12" column="0" colspan="2">
             <layout class="QGridLayout" name="gridLayout_2">
              <item row="0" column="1">
               <widget class="QLabel" name="label_21">
@@ -296,6 +296,26 @@
               <widget class="QLabel" name="label_22">
                <property name="text">
                 <string>Triples</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLabel" name="triples_label">
+               <property name="text">
+                <string>2</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QLabel" name="home_runs_label">
+               <property name="text">
+                <string>3</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -332,29 +352,9 @@
                </property>
               </widget>
              </item>
-             <item row="1" column="2">
-              <widget class="QLabel" name="triples_label">
-               <property name="text">
-                <string>2</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="3">
-              <widget class="QLabel" name="home_runs_label">
-               <property name="text">
-                <string>3</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
             </layout>
            </item>
-           <item row="11" column="0" colspan="2">
+           <item row="13" column="0" colspan="2">
             <widget class="Line" name="line_2">
              <property name="minimumSize">
               <size>
@@ -367,7 +367,7 @@
              </property>
             </widget>
            </item>
-           <item row="12" column="0" colspan="2">
+           <item row="14" column="0" colspan="2">
             <widget class="QLabel" name="label_11">
              <property name="text">
               <string>To add another player, click &quot;Clear&quot;. If you want to view the final results, click &quot;Go to final screen&quot;.</string>
@@ -420,6 +420,26 @@
              </property>
             </widget>
            </item>
+           <item row="10" column="0" colspan="2">
+            <widget class="QLabel" name="label_17">
+             <property name="text">
+              <string>Total Hits:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0" colspan="2">
+            <widget class="QLabel" name="total_hits_label">
+             <property name="text">
+              <string>6</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </widget>
@@ -442,9 +462,9 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>-70</y>
             <width>731</width>
-            <height>208</height>
+            <height>329</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -488,7 +508,10 @@
            <item>
             <widget class="QLabel" name="label_15">
              <property name="text">
-              <string>Below is a table containing all entered data this session, sorted by batting average:</string>
+              <string>Below is a table containing all entered data this session, sorted by batting average (click on a column header to sort by that instead):</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -517,6 +540,11 @@
              <column>
               <property name="text">
                <string>Times at bat</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Total hits</string>
               </property>
              </column>
              <column>

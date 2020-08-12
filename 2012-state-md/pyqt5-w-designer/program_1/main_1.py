@@ -1,7 +1,7 @@
 """Program 1: PyQt5+designer used."""
 
 import sys
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from program_1 import Ui_MainWindow
 
 class Player():
@@ -141,6 +141,7 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.at_bat_label.setText(str(last_player.times_at_bat))
         self.batting_avg_label.setText(str(last_player.batting_average()))
         self.slugging_label.setText(str(last_player.slugging_percentage()))
+        self.total_hits_label.setText(str(last_player.hits()))
         self.singles_label.setText(str(last_player.singles))
         self.doubles_label.setText(str(last_player.doubles))
         self.triples_label.setText(str(last_player.triples))
@@ -150,7 +151,44 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def generate_final_screen(self):
         """Generate the final screen, updating the player list and applicable labels."""
         #Change "Go to final screen" to "Return to player entry"
-        pass
+        
+        #First we'll figure out who has the highest average
+        #By default, the best player is the first
+        #This is guaranteed to run since the only way to get to the third screen
+        #is via the second screen, at which point at least one player MUST be added
+        best_player = self.players[0]
+        for player in self.players:
+            if player.batting_average() > best_player.batting_average():
+                best_player = player
+        
+        #Now we'll update the end labels
+        self.highest_avg_label.setText(f'Best Player by Batting Average: {best_player.name}')
+        self.avg_value_label.setText(f'Batting Average: {best_player.batting_average()}')
+
+        self.table_widget.setSortingEnabled(False)
+
+        #If I had extra time, I'd try to impress with this thing they didn't ask for
+        #clear the table
+        self.table_widget.setRowCount(0)
+        for player in self.players:
+            #index of this row
+            row = self.table_widget.rowCount()
+            self.table_widget.insertRow(row)
+            self.table_widget.setItem(row, 0, QtWidgets.QTableWidgetItem(player.name))
+            self.table_widget.setItem(row, 1, QtWidgets.QTableWidgetItem(player.team))
+            self.table_widget.setItem(row, 2, QtWidgets.QTableWidgetItem(str(player.batting_average())))
+            self.table_widget.setItem(row, 3, QtWidgets.QTableWidgetItem(str(player.slugging_percentage())))
+            self.table_widget.setItem(row, 4, QtWidgets.QTableWidgetItem(str(player.times_at_bat)))
+            self.table_widget.setItem(row, 5, QtWidgets.QTableWidgetItem(str(player.hits())))
+            self.table_widget.setItem(row, 6, QtWidgets.QTableWidgetItem(str(player.singles)))
+            self.table_widget.setItem(row, 7, QtWidgets.QTableWidgetItem(str(player.doubles)))
+            self.table_widget.setItem(row, 8, QtWidgets.QTableWidgetItem(str(player.triples)))
+            self.table_widget.setItem(row, 9, QtWidgets.QTableWidgetItem(str(player.home_runs)))
+
+        self.table_widget.setSortingEnabled(True)
+        self.table_widget.sortByColumn(2, QtCore.Qt.DescendingOrder)
+
+        self.change_screen(3)
     def clear_and_return(self):
         """Clear/reset all input fields and set the current screen to the first."""
         self.player_name_edit.clear()
@@ -169,15 +207,21 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.player_entry_box.show()
             self.first_output_box.hide()
             self.final_output_box.hide()
+            self.calculate_button.setText("Calculate")
+            self.calculate_button.setToolTip("Calculate this player's statistics.")
         elif new_screen == 2:
             self.player_entry_box.hide()
             self.first_output_box.show()
             self.final_output_box.hide()
+            self.calculate_button.setText("Go to final screen")
+            self.calculate_button.setToolTip("Show the best player and a table of all data.")
         else:
             #again, default to the last screen
             self.player_entry_box.hide()
             self.first_output_box.hide()
             self.final_output_box.show()
+            self.calculate_button.setText("Return to player entry")
+            self.calculate_button.setToolTip("This button has the same effect as clicking Clear.")
     def bad_player_dialog(self):
         """Generate a dialog telling the user they have inputted bad data."""
         #Really this is a roundabout way of handling zero division errors
