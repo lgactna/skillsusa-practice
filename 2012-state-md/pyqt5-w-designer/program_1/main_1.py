@@ -16,8 +16,10 @@ class Player():
         #While true we can just store a bunch of arrays, I like storing a bunch
         #of these objects better
 
-        self.name = data[0]
-        self.team = data[1]
+        #these two are strings
+        self.name = data[0] 
+        self.team = data[1] 
+        #the rest are ints
         self.times_at_bat = data[2]
         self.singles = data[3]
         self.doubles = data[4]
@@ -31,21 +33,35 @@ class Player():
         """
         return self.singles + self.doubles + self.triples + self.home_runs
 
-    def batting_average(self):
+    def batting_average(self, places=4):
         """Calculate and return the batting average of this player.
 
         The batting average of a player is the number of hits divided by their times at bat.
         """
-        return self.hits()/self.times_at_bat
+        return round(self.hits()/self.times_at_bat, places)
 
-    def slugging_average(self):
-        """Calculate and return the slugging average of this player.
+    def slugging_percentage(self, places=4):
+        """Calculate and return the slugging percentage of this player.
 
-        The slugging average of a player is equal to singles+doubles*2
+        The slugging percentage of a player is equal to singles+doubles*2
         +triples*3+home runs*4 divided by the times at bat.
+
+        Also rounds decimals to a certain number of `places`, default 4.
         """
         weighted = self.singles + self.doubles*2 + self.triples*3 + self.home_runs*4
-        return weighted/self.times_at_bat
+        return round(weighted/self.times_at_bat, places)
+    
+    def is_valid(self):
+        """Check if this is a valid player.
+        
+        An invalid player is one whose hits exceeds their times at bat or lacks a name.
+        """
+        if self.name == "":
+            return False
+        elif self.hits() > self.times_at_bat:
+            return False
+        else:
+            return True
 
 class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     """Main window. Instantiated once."""
@@ -93,10 +109,44 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def calculate_and_add_player(self):
         """Get the player input data, create a Player object, and add it to the list of players.
         
-        This also changes the screen and handles label updates.
+        This calls generate_second_screen after execution. Note that this also validates
+        several values - the number of times at bat cannot be zero and cannot be less than the amount of hits,
+        and the player name cannot be blank.
         """
-        #Change "calculate" button to "Go to final screen"
-        pass
+        player_data = []
+        player_data.append(self.player_name_edit.text())
+        player_data.append(self.team_code_combobox.currentText())
+        #This should be guaranteed to get each spinbox in the same order each time
+        for spinbox in self.player_entry_box.findChildren(QtWidgets.QSpinBox):
+            player_data.append(spinbox.value())
+        #Now we create the player object and have it validate itself
+        new_player = Player(player_data)
+        #If valid, add the player and change to the second screen
+        #Else, throw an error dialog at the user
+        if new_player.is_valid():
+            self.players.append(new_player)
+            self.generate_second_screen()
+        else:
+            self.bad_player_dialog()
+    def generate_second_screen(self):
+        """Generate the first output screen using the most recently added Player object.
+        
+        This changes the screen and handles label updates.
+        """
+        #Get the most recent player
+        last_player = self.players[-1]
+        #Set label text based on that Player object
+        self.player_name_label.setText(last_player.name)
+        self.team_code_label.setText(f'Team {last_player.team}')
+        self.at_bat_label.setText(str(last_player.times_at_bat))
+        self.batting_avg_label.setText(str(last_player.batting_average()))
+        self.slugging_label.setText(str(last_player.slugging_percentage()))
+        self.singles_label.setText(str(last_player.singles))
+        self.doubles_label.setText(str(last_player.doubles))
+        self.triples_label.setText(str(last_player.triples))
+        self.home_runs_label.setText(str(last_player.home_runs))
+        #Change the screen
+        self.change_screen(2)
     def generate_final_screen(self):
         """Generate the final screen, updating the player list and applicable labels."""
         #Change "Go to final screen" to "Return to player entry"
@@ -107,8 +157,14 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.team_code_combobox.setCurrentIndex(0)
         for spinbox in self.player_entry_box.findChildren(QtWidgets.QSpinBox):
             spinbox.setValue(0)
+        if self.current_screen != 1:
+            self.change_screen(1)
     def change_screen(self, new_screen):
         """Set the current screen. Simplifies widget hiding."""
+        if new_screen not in (1,2,3):
+            #Debug only
+            raise ValueError
+        self.current_screen = new_screen
         if new_screen == 1:
             self.player_entry_box.show()
             self.first_output_box.hide()
@@ -122,6 +178,18 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.player_entry_box.hide()
             self.first_output_box.hide()
             self.final_output_box.show()
+    def bad_player_dialog(self):
+        """Generate a dialog telling the user they have inputted bad data."""
+        #Really this is a roundabout way of handling zero division errors
+        QtWidgets.QMessageBox.critical(self, "Bad player data!",
+                                       "<p>Validation of your player data failed! This means "
+                                       "that at least one of the following is true:</p>"
+                                       "<p><ul>"
+                                       "<li>You are missing a player name.</li>"
+                                       "<li>The number of hits (singles+doubles+...) exceeds "
+                                       "the number of times at bat.</li></ul></p>"
+                                       "<p>Please check your inputs and try again.</p>",
+                                       QtWidgets.QMessageBox.Ok)
 
 
 if __name__ == '__main__':
