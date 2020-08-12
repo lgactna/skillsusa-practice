@@ -8,6 +8,7 @@ from PyQt5 import QtWidgets
 from program_2 import Ui_MainWindow
 
 def pad_zeroes(input):
+    """Return a string formatted to two decimal places (padding if neeeded)."""
     #yes i used stockoverflow for this one
     #if i were under time pressure i would've done something like converting it to a string
     #and checking the last two digits lol
@@ -261,7 +262,7 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.pizza_two_groupbox_2.setEnabled(True)
             self.pizzas_ordering = 2
     def missing_dialog(self):
-        """Creates a critical dialog informing the user of missing values.
+        """Create a critical dialog informing the user of missing values.
         
         This is currently shown when a button group returns a selected id of -1,
         meaning no button from the group has been selected. This is an invalid input,
@@ -272,7 +273,7 @@ class ApplicationWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                                        "for each pizza you are ordering.</p>",
                                        QtWidgets.QMessageBox.Ok)
     def noname_dialog(self):
-        """Creates a critical dialog informing the user that they must enter a name."""
+        """Create a critical dialog informing the user that they must enter a name."""
         QtWidgets.QMessageBox.critical(self, "Enter your name!",
                                        "<p>Please enter a name in the Customer Name field above.</p>",
                                        QtWidgets.QMessageBox.Ok)
